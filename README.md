@@ -4,7 +4,7 @@
 
 > Can a block-cipher-like construction derive not only secret numerical parameters, but also parts of its internal computational structure from the key?
 
-KGRTC is **research software, not a production cryptographic primitive**. It has not received independent cryptanalysis or a formal security proof. The repository is designed to make the construction reproducible, inspectable, testable, and easy to analyze.
+KGRTC is **research software, not a production cryptographic primitive**. It has not received independent cryptanalysis or a formal security proof. The repository is designed to make the construction reproducible, inspectable, testable, and easy to analyze. Researchers and independent analysts are explicitly encouraged to analyze and attempt to break the construction. Successful attacks and negative results are both valuable contributions.
 
 [![Rust](https://img.shields.io/badge/language-Rust-orange.svg)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
