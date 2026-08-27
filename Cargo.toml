@@ -1,0 +1,27 @@
+[package]
+name = "kgrtc"
+version = "0.2.0"
+edition = "2021"
+description = "KGRTC: an experimental, unaudited key-generated reversible transformer block cipher. Research code -- see SECURITY.md before using it for anything real."
+license = "MIT"
+
+[lib]
+name = "kgrtc"
+path = "src/lib.rs"
+
+# Plain std::time::Instant timing harness (see benches/performance.rs),
+# not the unstable `#[bench]` attribute -- harness = false tells cargo to
+# just run our own main() rather than expecting the nightly-only libtest
+# bench harness.
+[[bench]]
+name = "performance"
+harness = false
+
+[dependencies]
+sha3 = "0.10"
+hmac = "0.12"
+sha2 = "0.10"
+rand = "0.8"
+
+[profile.release]
+opt-level = 3
