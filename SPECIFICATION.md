@@ -27,7 +27,7 @@ Version 2.0 — this document
 > KGRTC-256 algorithm. If an explanatory document conflicts with this
 > specification, this specification takes precedence.
 >
-> See [Appendix E — Independent Implementation Conformance Profile](#appendix-e--independent-implementation-conformance-profile)
+> See [Appendix D — Independent Implementation Conformance Profile](#appendix-d--independent-implementation-conformance-profile)
 > for the normative interoperability-testing procedure.
 
 
@@ -119,10 +119,10 @@ HMAC-SHA-256; experimental cipher; not for production use.
    6.5  Modes of Operation                                          
 7  Security Status                                                  
 References                                                          
-Appendix A — Architecture Generation Examples                       
-Appendix B — Cipher Example                                        
-Appendix C — Example Vectors                            
-Appendix D — Independent Implementation Conformance Profile            
+ A — Architecture Generation Examples                       
+ B — Cipher Example                                        
+ C — Example Vectors                            
+ D — Independent Implementation Conformance Profile            
 ```
 
 ---
@@ -165,12 +165,12 @@ This document is organized as follows:
   considerations.
 - Section 7 states plainly what is and is not established about KGRTC's
   security, and must be read before any deployment decision.
-- Appendix A gives worked examples of the architecture-generation
+-  A gives worked examples of the architecture-generation
   routines (the KGRTC analog of FIPS 197's key-expansion examples).
-- Appendix B gives a full round-by-round example of one invocation of
+-  B gives a full round-by-round example of one invocation of
   the Cipher.
-- Appendix C gives authenticated-encryption example vectors.
-- Appendix D sumarises the independent implementation conformance profile
+-  C gives authenticated-encryption example vectors.
+-  D sumarises the independent implementation conformance profile
 
 ---
 
@@ -1275,7 +1275,7 @@ Because each S[ρ] is a distinct, key-derived table (Section 5.1.1),
 Sinv[ρ] is likewise distinct per round — where AES presents a single
 fixed `INVSBOX()` table (FIPS 197 Table 6), KGRTC's `INVSBOX()` for
 round `ρ` is computed by an implementation, not looked up from a
-published constant. Appendix A gives one complete, worked 256-entry
+published constant.  A gives one complete, worked 256-entry
 S[ρ]/Sinv[ρ] pair for a specific example key, exactly the way FIPS
 197 Table 4/Table 6 give the (fixed, key-independent) AES S-box and its
 inverse.
@@ -1580,10 +1580,10 @@ ChaCha20-Poly1305) instead.
 
 ---
 
-## Appendix A — Architecture Generation Examples
+##  A — Architecture Generation Examples
 
-This appendix shows the development of the Cipher Context for a specific
-example master key — the KGRTC analog of FIPS 197 Appendix A's Key
+This  shows the development of the Cipher Context for a specific
+example master key — the KGRTC analog of FIPS 197  A's Key
 Expansion Examples. All values were produced by executing the reference
 implementation directly, exactly as they would be by any conformant
 implementation of Sections 5.1–5.2. All values are given in hexadecimal.
@@ -1720,11 +1720,11 @@ mac_key = 42 07 b6 c8 f8 85 bb b4 71 3f 13 97 ab b0 05 d7
 
 ---
 
-## Appendix B — Cipher Example
+##  B — Cipher Example
 
 The following table shows the values of the state as `CIPHER()`
 progresses, for the block and key given below — the KGRTC analog of
-FIPS 197 Appendix B.
+FIPS 197  B.
 
 ```
 Input = 00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f
@@ -1733,7 +1733,7 @@ Key   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 ```
 
 The S-box, permutation, round key, and Transformer values are those
-generated for this key in Appendix A (round 0) and by the identical
+generated for this key in  A (round 0) and by the identical
 procedure for rounds 1–13.
 
 | Round | Start of round | After `SUBBYTES()` | After `PERMUTEBYTES()` | After `COUPLE()` | Round key | After `ADDROUNDKEY()` |
@@ -1778,7 +1778,7 @@ additive round key, depends on the key.
 
 ---
 
-## Appendix C — Example Vectors
+##  C — Example Vectors
 
 The following authenticated-encryption vector was produced directly by
 the reference implementation and may be used to validate an independent
@@ -1810,17 +1810,17 @@ Tamper test: flipping bit 0 of the first ciphertext byte and
 re-running AEDECRYPT yields error = AuthenticationFailed   ✔  (verified)
 ```
 
-Appendix B's single-block `CIPHER()`/`INVCIPHER()` example and this
-appendix's `AEENCRYPT()`/`AEDECRYPT()` example together exercise every
+ B's single-block `CIPHER()`/`INVCIPHER()` example and this
+'s `AEENCRYPT()`/`AEDECRYPT()` example together exercise every
 numbered algorithm in Section 5 for at least one concrete input; an
 independent implementation reproducing both exactly (byte-for-byte) has
 strong evidence of conformance with Sections 4–5 of this document.
 
 ---
 
-## Appendix D — Independent Implementation Conformance Profile
+##  D — Independent Implementation Conformance Profile
 
-This appendix is normative for interoperability testing.
+This  is normative for interoperability testing.
 
 An independent implementation should perform the following checks in order:
 
